@@ -1,11 +1,41 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 
 export type CharacterTheme = 'princess' | 'chase' | 'bluey' | 'astronaut' | 'superhero' | 'sheep' | 'nature';
+
+export const RANDOM_ENCOURAGEMENT_MESSAGES = [
+  "You are doing wonderful practicing this part!",
+  "MashaAllah! You are doing such an amazing job!",
+  "SubhanAllah, look how focused and gentle you are!",
+  "Take your time, you are doing fantastic with this step!",
+  "Bismillah! You are making great progress step by step!",
+  "Allah loves your sincere effort — keep up the awesome work!",
+  "Super job! Take a calm breath and smile, you got this!",
+  "You're a star learner! Every little step counts!",
+  "MashaAllah, you are learning with such care and patience!",
+  "High five! You are doing an incredible job today!",
+  "Keep going! Your effort brings so much barakah and joy!",
+  "Wonderful work! You are practicing like a true champion!",
+  "Peaceful and steady! You are doing beautifully!",
+  "MashaAllah, Allah sees your kind heart and great effort!"
+];
+
+export function getRandomCompanionMessage(stepNumber?: number, seed?: number): string {
+  const list = RANDOM_ENCOURAGEMENT_MESSAGES;
+  let idx: number;
+  if (typeof seed === 'number') {
+    idx = Math.abs(seed) % list.length;
+  } else {
+    idx = Math.floor(Math.random() * list.length);
+  }
+  const msg = list[idx];
+  return stepNumber ? `Step ${stepNumber}: ${msg}` : msg;
+}
 
 interface CartoonCompanionProps {
   theme?: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';
   actionMessage?: string;
+  stepNumber?: number;
   className?: string;
   interactive?: boolean;
   onSelectTheme?: (theme: CharacterTheme) => void;
@@ -38,11 +68,23 @@ export const CartoonCompanion: React.FC<CartoonCompanionProps> = ({
   theme,
   size = 'md',
   actionMessage,
+  stepNumber,
   className = '',
   interactive = false,
   onSelectTheme
 }) => {
   const activeTheme = theme ? detectCharacterTheme(theme) : 'princess';
+  const [randomBonusIndex, setRandomBonusIndex] = useState(0);
+
+  const displayMessage = useMemo(() => {
+    if (actionMessage) return actionMessage;
+    const msg = RANDOM_ENCOURAGEMENT_MESSAGES[randomBonusIndex % RANDOM_ENCOURAGEMENT_MESSAGES.length];
+    return stepNumber ? `Step ${stepNumber}: ${msg}` : msg;
+  }, [actionMessage, stepNumber, randomBonusIndex]);
+
+  const handleShuffleCheer = () => {
+    setRandomBonusIndex((prev) => prev + 1);
+  };
 
   const sizeDimensions = {
     sm: 'w-12 h-12',
@@ -263,15 +305,20 @@ export const CartoonCompanion: React.FC<CartoonCompanionProps> = ({
         {renderCharacterIllustration(activeTheme)}
       </div>
 
-      {actionMessage && (
-        <div className="relative bg-white/90 backdrop-blur-xs border-2 border-amber-300/80 rounded-2xl px-4 py-2.5 shadow-sm text-left max-w-sm">
+      {displayMessage && (
+        <div
+          onClick={handleShuffleCheer}
+          title="Tap for another encouragement cheer!"
+          className="relative bg-white/95 backdrop-blur-xs border-2 border-amber-300/80 hover:border-amber-400 rounded-2xl px-4 py-2.5 shadow-sm text-left max-w-sm cursor-pointer transition-all hover:scale-[1.01]"
+        >
           {/* Comic speech bubble tail */}
           <div className="hidden sm:block absolute -left-2 top-1/2 -translate-y-1/2 w-0 h-0 border-y-[6px] border-y-transparent border-r-[8px] border-r-amber-300/80" />
-          <div className="flex items-center gap-1.5 text-2xs font-extrabold uppercase tracking-wider text-amber-800 mb-0.5">
+          <div className="flex items-center justify-between gap-1.5 text-2xs font-extrabold uppercase tracking-wider text-amber-800 mb-0.5">
             <span>⭐ {getThemeTitle(activeTheme)}</span>
+            <span className="text-3xs font-semibold text-amber-600 bg-amber-100/70 px-1.5 py-0.2 rounded-full">Tap to cheer 🎲</span>
           </div>
           <p className="text-xs sm:text-sm font-semibold text-slate-800 leading-snug">
-            {actionMessage}
+            {displayMessage}
           </p>
         </div>
       )}

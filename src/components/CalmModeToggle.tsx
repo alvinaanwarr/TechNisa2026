@@ -21,11 +21,11 @@ export const CalmModeToggle: React.FC<CalmModeToggleProps> = ({
       title={isCalmMode ? 'Calm Mode is ON (Sensory-friendly, no animations, minimal clutter)' : 'Turn ON Calm Mode (Sensory-friendly)'}
       className={`inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full font-medium text-xs transition-all border shadow-2xs ${
         isCalmMode
-          ? 'bg-[#869EC9] text-white border-[#728CB6] shadow-xs'
-          : 'bg-[#E8EEF8] text-[#344D76] border-[#99AFD7]/50 hover:bg-[#DCE5F4] hover:border-[#99AFD7]'
+          ? 'bg-[#1e3a8a] text-white border-[#1e3a8a] shadow-xs'
+          : 'bg-[#bfdbfe] text-[#1e3a8a] border-[#7dd3fc] hover:bg-[#93c5fd] hover:border-[#60a5fa]'
       } ${className}`}
     >
-      <Feather className={`w-3.5 h-3.5 ${isCalmMode ? 'text-white' : 'text-[#5D7CAE]'}`} />
+      <Feather className={`w-3.5 h-3.5 ${isCalmMode ? 'text-white' : 'text-[#1e3a8a]'}`} />
       <span className="font-bold whitespace-nowrap">
         {isCalmMode ? 'Calm: ON' : 'Calm Mode'}
       </span>

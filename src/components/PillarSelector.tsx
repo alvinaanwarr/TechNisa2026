@@ -14,6 +14,7 @@ interface PillarSelectorProps {
   currentLessonId?: string;
   onSelectLesson: (lesson: LessonData) => void;
   className?: string;
+  isCalmMode?: boolean;
 }
 
 interface PillarItem {
@@ -83,7 +84,8 @@ export const PILLARS_LIST: PillarItem[] = [
 export const PillarSelector: React.FC<PillarSelectorProps> = ({
   currentLessonId,
   onSelectLesson,
-  className = ''
+  className = '',
+  isCalmMode = false
 }) => {
   const isAllOverview = currentLessonId === FIVE_PILLARS_LESSON.id;
 
@@ -91,23 +93,37 @@ export const PillarSelector: React.FC<PillarSelectorProps> = ({
     <section
       id="five-pillars-navigation-hub"
       aria-label="The 5 Pillars of Islam (Arkān ul-Islām) Navigation"
-      className={`bg-white rounded-3xl p-5 sm:p-6 shadow-sm border border-stone-200/90 space-y-4 ${className}`}
+      className={`bg-white rounded-3xl p-5 sm:p-6 shadow-sm space-y-4 transition-colors ${
+        isCalmMode ? 'border border-[#99AFD7]/40' : 'border border-[#93c5fd]/50'
+      } ${className}`}
     >
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-stone-100">
+      <div className={`flex flex-wrap items-center justify-between gap-3 pb-3 border-b ${
+        isCalmMode ? 'border-[#99AFD7]/30' : 'border-[#93c5fd]/30'
+      }`}>
         <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-2xl bg-[#7B9A7A]/15 text-[#7B9A7A] flex items-center justify-center font-bold">
+          <div
+            className={`w-9 h-9 rounded-2xl flex items-center justify-center font-bold ${
+              isCalmMode ? 'bg-[#E8EEF8] text-[#344D76]' : 'bg-[#bae6fd] text-[#1e3a8a]'
+            }`}
+          >
             <ShieldCheck className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-base font-bold text-stone-900">
+              <h3 className={`text-base font-bold ${isCalmMode ? 'text-slate-800' : 'text-[#1e3a8a]'}`}>
                 The 5 Pillars of Islam (Arkān ul-Islām)
               </h3>
-              <span className="px-2 py-0.5 bg-stone-100 text-stone-600 rounded-full text-xs font-semibold">
+              <span
+                className={`px-2 py-0.5 rounded-full text-xs font-semibold border ${
+                  isCalmMode
+                    ? 'bg-[#E8EEF8] text-[#344D76] border-[#99AFD7]/40'
+                    : 'bg-[#bfdbfe] text-[#1e3a8a] border-[#7dd3fc]'
+                }`}
+              >
                 5 Distinct Lessons
               </span>
             </div>
-            <p className="text-xs text-stone-500">
+            <p className={`text-xs ${isCalmMode ? 'text-slate-600' : 'text-[#1e3a8a]/70'}`}>
               5 sacred pillars holding up our Deen: Sadaqah, Salah, Siyam, Zakat, and Hajj.
             </p>
           </div>
@@ -119,8 +135,12 @@ export const PillarSelector: React.FC<PillarSelectorProps> = ({
           onClick={() => onSelectLesson(FIVE_PILLARS_LESSON)}
           className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 border ${
             isAllOverview
-              ? 'bg-[#7B9A7A] text-white border-[#7B9A7A] shadow-xs'
-              : 'bg-stone-50 text-stone-700 border-stone-200 hover:bg-stone-100'
+              ? isCalmMode
+                ? 'bg-[#344D76] text-white border-[#344D76] shadow-xs'
+                : 'bg-[#1e3a8a] text-white border-[#1e3a8a] shadow-xs'
+              : isCalmMode
+                ? 'bg-[#E8EEF8] text-[#344D76] border-[#99AFD7]/50 hover:bg-[#DCE5F4]'
+                : 'bg-[#bae6fd]/30 text-[#1e3a8a] border-[#93c5fd] hover:bg-[#bae6fd]/60'
           }`}
         >
           <Sparkles className="w-3.5 h-3.5" />
@@ -140,23 +160,37 @@ export const PillarSelector: React.FC<PillarSelectorProps> = ({
               type="button"
               id={`pillar-btn-${pillar.number}`}
               onClick={() => onSelectLesson(pillar.lesson)}
-              className={`p-3.5 rounded-2xl border text-left transition-all relative flex flex-col justify-between group ${
+              className={`p-3.5 rounded-2xl border text-left transition-all relative flex flex-col justify-between group shadow-2xs hover:shadow-xs ${
                 isSelected
-                  ? pillar.activeColor
-                  : `bg-stone-50/70 border-stone-200/80 ${pillar.color}`
+                  ? isCalmMode
+                    ? 'bg-[#E0E7F5] border-[#344D76] ring-2 ring-[#99AFD7]/50 text-[#344D76]'
+                    : 'bg-[#bfdbfe] border-[#1e3a8a] ring-2 ring-[#60a5fa]/40 text-[#1e3a8a]'
+                  : isCalmMode
+                    ? 'bg-white/80 border-[#99AFD7]/40 hover:border-[#869EC9] hover:bg-[#F2F6FC] text-slate-800'
+                    : 'bg-white/80 border-[#93c5fd]/50 hover:border-[#60a5fa] hover:bg-[#bae6fd]/30 text-[#1e3a8a]'
               }`}
             >
               <div>
                 <div className="flex items-center justify-between gap-1 mb-1.5">
-                  <span className="w-6 h-6 rounded-full bg-white/90 shadow-2xs border border-stone-200 text-xs font-extrabold flex items-center justify-center text-stone-700">
+                  <span
+                    className={`w-6 h-6 rounded-full bg-white shadow-2xs border text-xs font-extrabold flex items-center justify-center ${
+                      isCalmMode
+                        ? 'border-[#99AFD7]/50 text-[#344D76]'
+                        : 'border-[#93c5fd] text-[#1e3a8a]'
+                    }`}
+                  >
                     {pillar.number}
                   </span>
                   <div className="flex items-center gap-1">
-                    <span className="text-2xs font-semibold text-stone-500" dir="rtl">
+                    <span className={`text-2xs font-semibold ${isCalmMode ? 'text-slate-600' : 'text-[#1e3a8a]/70'}`} dir="rtl">
                       {pillar.arabicName}
                     </span>
                     {isSelected && (
-                      <span className="w-4 h-4 rounded-full bg-emerald-600 text-white flex items-center justify-center">
+                      <span
+                        className={`w-4 h-4 rounded-full text-white flex items-center justify-center ${
+                          isCalmMode ? 'bg-[#344D76]' : 'bg-[#1e3a8a]'
+                        }`}
+                      >
                         <Check className="w-2.5 h-2.5 stroke-[3]" />
                       </span>
                     )}
@@ -164,20 +198,26 @@ export const PillarSelector: React.FC<PillarSelectorProps> = ({
                 </div>
 
                 <div className="flex items-center gap-1.5 mb-1">
-                  <Icon className="w-4 h-4 text-stone-700 shrink-0 group-hover:scale-110 transition-transform" />
-                  <span className="font-bold text-sm text-stone-900 line-clamp-1">
+                  <Icon className={`w-4 h-4 shrink-0 group-hover:scale-110 transition-transform ${isCalmMode ? 'text-[#5D7CAE]' : 'text-[#1e3a8a]'}`} />
+                  <span className={`font-bold text-sm line-clamp-1 ${isCalmMode ? 'text-slate-900' : 'text-[#1e3a8a]'}`}>
                     {pillar.name}
                   </span>
                 </div>
 
-                <p className="text-2xs text-stone-600 line-clamp-2 leading-tight">
+                <p className={`text-2xs line-clamp-2 leading-tight ${isCalmMode ? 'text-slate-600' : 'text-[#1e3a8a]/75'}`}>
                   {pillar.subtext}
                 </p>
               </div>
 
-              <div className="mt-2 pt-2 border-t border-stone-200/60 flex items-center justify-between text-2xs font-bold text-stone-500">
+              <div className={`mt-2 pt-2 border-t flex items-center justify-between text-2xs font-bold ${
+                isCalmMode ? 'border-[#99AFD7]/20 text-slate-500' : 'border-[#93c5fd]/30 text-[#1e3a8a]/70'
+              }`}>
                 <span>{pillar.lesson.lessonSteps.length} Steps</span>
-                <span className={isSelected ? 'text-emerald-700 font-extrabold' : 'text-stone-400 group-hover:text-stone-700'}>
+                <span className={
+                  isSelected
+                    ? isCalmMode ? 'text-[#344D76] font-extrabold' : 'text-[#1e3a8a] font-extrabold'
+                    : isCalmMode ? 'text-slate-400 group-hover:text-slate-700' : 'text-[#1e3a8a]/50 group-hover:text-[#1e3a8a]'
+                }>
                   {isSelected ? '● Active' : 'Start Lesson →'}
                 </span>
               </div>

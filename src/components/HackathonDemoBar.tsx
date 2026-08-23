@@ -321,3 +321,5 @@ export const HackathonDemoBar: React.FC<HackathonDemoBarProps> = ({
     </div>
   );
 };
+
+

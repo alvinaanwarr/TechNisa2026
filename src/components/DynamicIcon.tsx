@@ -40,6 +40,12 @@ import {
   Sparkle,
   User,
   Users,
+  Key,
+  Mountain,
+  Languages,
+  TreePine,
+  Flame,
+  CheckCheck,
   LucideProps
 } from 'lucide-react';
 
@@ -83,7 +89,13 @@ const ICON_MAP: Record<string, React.FC<LucideProps>> = {
   Award,
   Sparkle,
   User,
-  Users
+  Users,
+  Key,
+  Mountain,
+  Languages,
+  TreePine,
+  Flame,
+  CheckCheck
 };
 
 interface DynamicIconProps extends LucideProps {

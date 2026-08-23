@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { VisualContent } from '../../types';
 import { AudioPlayer } from '../AudioPlayer';
 import { DynamicIcon } from '../DynamicIcon';
-import { CartoonCompanion, CharacterTheme } from '../CartoonCompanion';
+import { CartoonCompanion, CharacterTheme, getRandomCompanionMessage } from '../CartoonCompanion';
 import { PecBoardView } from './PecBoardView';
 import { ChevronLeft, ChevronRight, LayoutGrid, Layers, CheckCircle2, RotateCcw, Sparkles, Grid } from 'lucide-react';
 import confetti from 'canvas-confetti';
@@ -57,7 +57,7 @@ export const VisualView: React.FC<VisualViewProps> = ({
 
   const currentSpeechText = isFinished
     ? `${content.completionBadge || 'All steps completed! Alhamdulillah!'}`
-    : `Step ${currentCard.stepNumber}: ${currentCard.title}. ${currentCard.simpleSentence}. ${currentCard.arabicTransliteration ? `Meaning: ${currentCard.arabicTransliteration}` : ''}`;
+    : `Step ${currentCard.stepNumber}: ${currentCard.title}. ${currentCard.englishTranslation ? `Meaning: ${currentCard.englishTranslation}. ` : ''}${currentCard.simpleSentence}. ${currentCard.arabicTransliteration ? `In Arabic: ${currentCard.arabicTransliteration}.` : ''}`;
 
   return (
     <div id="visual-mode-container" className="space-y-6 max-w-4xl mx-auto">
@@ -161,15 +161,22 @@ export const VisualView: React.FC<VisualViewProps> = ({
               <DynamicIcon name={currentCard.iconName || 'Sparkles'} className="w-14 h-14 sm:w-16 sm:h-16 text-[#4A6349]" />
             </div>
 
-            {/* Arabic Term if present */}
-            {currentCard.arabicTerm && (
-              <div className="inline-block bg-white/80 px-5 py-2.5 rounded-2xl border border-slate-200 shadow-2xs backdrop-blur-xs">
-                <span className="text-xl sm:text-2xl font-bold text-slate-800 tracking-wide">
-                  {currentCard.arabicTerm}
-                </span>
+            {/* Arabic Term and English Translation if present */}
+            {(currentCard.arabicTerm || currentCard.englishTranslation) && (
+              <div className="inline-flex flex-col items-center gap-1 bg-white/90 px-5 py-3 rounded-2xl border border-slate-200 shadow-2xs backdrop-blur-xs max-w-md mx-auto">
+                {currentCard.arabicTerm && (
+                  <span className="text-xl sm:text-2xl font-bold text-slate-800 tracking-wide font-arabic" dir="rtl">
+                    {currentCard.arabicTerm}
+                  </span>
+                )}
+                {currentCard.englishTranslation && (
+                  <span className="px-3 py-0.5 bg-blue-50 text-[#1e3a8a] text-xs font-extrabold rounded-lg border border-blue-200">
+                    = {currentCard.englishTranslation}
+                  </span>
+                )}
                 {currentCard.arabicTransliteration && (
-                  <span className="block text-xs text-slate-500 font-medium mt-0.5">
-                    {currentCard.arabicTransliteration}
+                  <span className="text-xs text-slate-500 font-medium">
+                    ({currentCard.arabicTransliteration})
                   </span>
                 )}
               </div>
@@ -195,7 +202,7 @@ export const VisualView: React.FC<VisualViewProps> = ({
               <CartoonCompanion
                 theme={selectedCompanion}
                 size="md"
-                actionMessage={`Step ${currentCard.stepNumber}: You are doing wonderful practicing this part!`}
+                stepNumber={currentCard.stepNumber}
                 interactive={true}
                 onSelectTheme={(t) => setSelectedCompanion(t)}
               />

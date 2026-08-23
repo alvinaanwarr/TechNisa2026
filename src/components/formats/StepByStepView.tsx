@@ -2,7 +2,18 @@ import React, { useState } from 'react';
 import { StepContent } from '../../types';
 import { AudioPlayer } from '../AudioPlayer';
 import { DynamicIcon } from '../DynamicIcon';
-import { ChevronLeft, ChevronRight, CheckSquare, CheckCircle2, RotateCcw, Feather, Sparkles } from 'lucide-react';
+import {
+  ChevronLeft,
+  ChevronRight,
+  CheckSquare,
+  CheckCircle2,
+  RotateCcw,
+  Feather,
+  Sparkles,
+  Eye,
+  EyeOff,
+  Type
+} from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { STORAGE_KEYS } from '../../services/storageService';
@@ -25,6 +36,9 @@ export const StepByStepView: React.FC<StepByStepViewProps> = ({
     []
   );
   const [isFinished, setIsFinished] = useState(false);
+  const [hideCompletedSteps, setHideCompletedSteps] = useState(false);
+  const [fontSize, setFontSize] = useState<'standard' | 'large' | 'xlarge'>('standard');
+  const [unclutteredMode, setUnclutteredMode] = useState(false);
 
   const steps = content.steps || [];
   const currentStep = steps[currentStepIndex] || steps[0];
@@ -74,14 +88,28 @@ export const StepByStepView: React.FC<StepByStepViewProps> = ({
     ? content.successMessage
     : `${currentStep.title}. Instruction: ${currentStep.instruction}. ${currentStep.detail}. ${currentStep.repeatPhrase ? `Repeat: ${currentStep.repeatPhrase}` : ''}`;
 
+  const textSizeClass =
+    fontSize === 'xlarge'
+      ? 'text-2xl sm:text-4xl'
+      : fontSize === 'large'
+      ? 'text-xl sm:text-3xl'
+      : 'text-xl sm:text-2xl';
+
+  const detailSizeClass =
+    fontSize === 'xlarge'
+      ? 'text-base sm:text-xl'
+      : fontSize === 'large'
+      ? 'text-sm sm:text-lg'
+      : 'text-sm sm:text-base';
+
   return (
     <div id="step-by-step-container" className="space-y-6 max-w-4xl mx-auto">
-      {/* Header Info */}
+      {/* Header Info with Sensory & Accessibility Controls */}
       <div className="bg-white/70 backdrop-blur-md border border-white/80 rounded-[2rem] p-4 sm:p-6 shadow-sm flex flex-wrap items-center justify-between gap-4">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F0F4FF] text-[#5C7CFA] rounded-full text-xs font-bold mb-1 border border-[#5C7CFA]/30">
             <CheckSquare className="w-3.5 h-3.5" />
-            <span>🧩 Step-by-Step Mode • One Task at a Time</span>
+            <span>🧩 Step-by-Step Guide • Tactile Checkmarks</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900 font-heading">
             {content.title}
@@ -89,7 +117,47 @@ export const StepByStepView: React.FC<StepByStepViewProps> = ({
           <p className="text-xs sm:text-sm text-slate-600 mt-0.5">{content.goal}</p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2.5">
+          {/* Hide Completed Steps Toggle to avoid overstimulation */}
+          <button
+            type="button"
+            onClick={() => setHideCompletedSteps(!hideCompletedSteps)}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 border transition-all ${
+              hideCompletedSteps
+                ? 'bg-blue-600 text-white border-blue-700 shadow-2xs'
+                : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
+            }`}
+            title="Hide finished steps to avoid cognitive overwhelm"
+          >
+            {hideCompletedSteps ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+            <span>{hideCompletedSteps ? 'Hiding Done Steps' : 'Hide Done Steps'}</span>
+          </button>
+
+          {/* Text Size Control */}
+          <div className="inline-flex p-0.5 bg-slate-100 rounded-xl border border-slate-200 text-3xs font-extrabold">
+            <button
+              type="button"
+              onClick={() => setFontSize('standard')}
+              className={`px-2 py-1 rounded-lg ${fontSize === 'standard' ? 'bg-white text-slate-900 shadow-2xs' : 'text-slate-500'}`}
+            >
+              A
+            </button>
+            <button
+              type="button"
+              onClick={() => setFontSize('large')}
+              className={`px-2 py-1 rounded-lg ${fontSize === 'large' ? 'bg-white text-slate-900 shadow-2xs' : 'text-slate-500'}`}
+            >
+              A+
+            </button>
+            <button
+              type="button"
+              onClick={() => setFontSize('xlarge')}
+              className={`px-2 py-1 rounded-lg ${fontSize === 'xlarge' ? 'bg-white text-slate-900 shadow-2xs' : 'text-slate-500'}`}
+            >
+              A++
+            </button>
+          </div>
+
           <AudioPlayer textToRead={currentSpeechText} isCalmMode={isCalmMode} />
         </div>
       </div>
@@ -101,10 +169,10 @@ export const StepByStepView: React.FC<StepByStepViewProps> = ({
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-700">
               <span className="text-[#5C7CFA]">
-                Instruction {currentStepIndex + 1} of {totalSteps}
+                Step {currentStepIndex + 1} of {totalSteps}
               </span>
               <span className="text-slate-500">
-                {completedSteps.length} of {totalSteps} finished
+                {completedSteps.length} of {totalSteps} completed ✓
               </span>
             </div>
 
@@ -131,18 +199,18 @@ export const StepByStepView: React.FC<StepByStepViewProps> = ({
 
             {/* Instruction Focus Area */}
             <div className="p-6 sm:p-8 bg-[#FDFCF9]/90 border border-slate-200/80 rounded-[2rem] shadow-2xs space-y-4 backdrop-blur-xs">
-              <p className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+              <p className={`${textSizeClass} font-bold text-slate-900 leading-snug`}>
                 {currentStep.instruction}
               </p>
               {currentStep.detail && (
-                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                <p className={`${detailSizeClass} text-slate-600 leading-relaxed`}>
                   {currentStep.detail}
                 </p>
               )}
             </div>
 
             {/* Repetition Phrase for memory retention */}
-            {currentStep.repeatPhrase && (
+            {currentStep.repeatPhrase && !unclutteredMode && (
               <div className="p-4 bg-[#E8F1E7]/90 border border-[#7B9A7A]/30 rounded-2xl flex items-start gap-3 backdrop-blur-xs">
                 <Sparkles className="w-5 h-5 text-[#7B9A7A] shrink-0 mt-0.5" />
                 <div>
@@ -157,7 +225,7 @@ export const StepByStepView: React.FC<StepByStepViewProps> = ({
             )}
 
             {/* Sensory Tip */}
-            {currentStep.sensoryTip && (
+            {currentStep.sensoryTip && !unclutteredMode && (
               <div className="p-4 bg-[#FCE8D5]/90 border border-[#FCE8D5] rounded-2xl flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 backdrop-blur-xs">
                 <Feather className="w-4 h-4 text-[#D97706] shrink-0" />
                 <span><strong className="text-slate-900">Sensory Tip:</strong> {currentStep.sensoryTip}</span>
@@ -184,7 +252,7 @@ export const StepByStepView: React.FC<StepByStepViewProps> = ({
               <span>
                 {completedSteps.includes(currentStep.stepNumber)
                   ? 'Done! Marked as completed ✓'
-                  : 'Click when finished with this step'}
+                  : 'Click checkmark when finished with this step'}
               </span>
             </button>
           </div>

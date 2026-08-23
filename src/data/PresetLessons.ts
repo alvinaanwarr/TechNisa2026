@@ -155,13 +155,13 @@ export const TOPIC_PRESETS: TopicPreset[] = [
     badgeColor: 'bg-rose-50 text-rose-700 border-rose-200'
   },
   {
-    id: 'prophet_yunus',
-    title: 'Story of Prophet Yunus & The Gentle Whale',
-    category: 'Stories of the Prophets',
-    description: 'A comforting story about making mistakes, saying a gentle prayer in the dark, and Allah’s mercy.',
-    coreConcepts: ['Patience', 'Prophet Yunus (Jonah)', 'The Dua in the whale’s belly', 'Allah always listens', 'Fresh beginnings'],
-    icon: 'Fish',
-    badgeColor: 'bg-cyan-50 text-cyan-700 border-cyan-200'
+    id: 'daily_dhikr',
+    title: 'Daily Du\'as & Words of Gratitude (Dhikr)',
+    category: 'Remembrance & Calming Duas',
+    description: 'Gentle, soothing daily words of peace: Bismillah, Alhamdulillah, SubhanAllah, and bedtime du\'as.',
+    coreConcepts: ['Bismillah (In Allah’s Name)', 'Alhamdulillah (All Praise to Allah)', 'SubhanAllah (Glory to Allah)', 'Ayat al-Kursi Comfort', 'Calming Morning & Evening Duas'],
+    icon: 'Sun',
+    badgeColor: 'bg-amber-50 text-amber-700 border-amber-200'
   }
 ];
 
@@ -1554,4 +1554,497 @@ export const FIVE_PILLARS_LESSON: LessonData = {
 
 export const HACKATHON_DEMO_LEARNER_3 = FIVE_PILLARS_LESSON;
 
+export const DAILY_DHIKR_LESSON: LessonData = {
+  id: 'daily-dhikr-step-master',
+  topic: 'Daily Du\'as & Words of Gratitude (Dhikr)',
+  title: 'Daily Dhikr: 8 Step-by-Step Words of Peace & Remembrance',
+  learningObjective: 'Learn and practice 8 core Dhikr remembrance words step-by-step with clear Arabic script, phonetic transliteration, explicit English translations, meaning-matched visual PECS pictures, and calming sensory pacing.',
+  introduction: 'Dhikr (ذِكْر) means remembering Allah with gentle, loving words. The Prophet ﷺ taught that remembering Allah makes our heart feel calm, peaceful, and safe—just like resting under a cool, leafy tree. We learn these 8 Dhikr words one step at a time so our mind never feels rushed or overwhelmed.',
+  topicKey: 'daily_dhikr',
+  ageRange: '7-9',
+  learnerNickname: 'Peaceful Explorer',
+  selectedInterest: 'Nature & Stars',
+  activeFormat: 'interactive_cards',
+  learningPreferences: ['visual', 'short_instructions', 'one_step', 'repetition', 'low_stimulation'],
+  isCalmMode: true,
+  lessonSteps: [
+    {
+      stepNumber: 1,
+      title: 'Step 1: Bismillah (In the Name of Allah)',
+      instruction: 'Say "Bismillah" before starting anything: eating, drinking, opening a book, or playing.',
+      arabicTerm: 'بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ',
+      arabicTransliteration: 'Bismillah ir-Rahman ir-Raheem',
+      tip: 'Meaning = "In the Name of Allah, the Most Merciful, the Especially Merciful".',
+      detail: 'Starting with Bismillah invites Allah\'s blessing (Barakah) and protection into every small moment of our day.',
+      iconName: 'BookOpen',
+      repeatPhrase: 'Bismillah — I begin with Allah.',
+      sensoryTip: 'Take a soft breath and whisper Bismillah whenever you touch your food or open your school bag.',
+      actionPrompt: 'Whisper "Bismillah" right now before we move to Step 2!'
+    },
+    {
+      stepNumber: 2,
+      title: 'Step 2: SubhanAllah (Glory be to Allah / How Perfect Allah Is)',
+      instruction: 'Say "SubhanAllah" when you admire something beautiful in creation like twinkling stars, cute animals, or glowing sunsets.',
+      arabicTerm: 'سُبْحَانَ ٱللَّهِ',
+      arabicTransliteration: 'SubhanAllah',
+      tip: 'Meaning = "Glory be to Allah" (Allah is completely flawless and perfect).',
+      detail: 'Whenever we see the vast cosmos or a tiny honeybee, our heart remembers that Allah created everything with flawless perfection.',
+      iconName: 'Sparkles',
+      repeatPhrase: 'SubhanAllah — How perfect is Allah!',
+      sensoryTip: 'Picture looking up at a dark, quiet night sky filled with millions of glittering stars.',
+      actionPrompt: 'Think of your favorite animal or planet and say "SubhanAllah".'
+    },
+    {
+      stepNumber: 3,
+      title: 'Step 3: Alhamdulillah (All Praise and Thanks to Allah)',
+      instruction: 'Say "Alhamdulillah" when feeling happy, after eating delicious food, drinking cold water, or when waking up in the morning.',
+      arabicTerm: 'ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ',
+      arabicTransliteration: 'Alhamdulillahi Rabbil \'Alameen',
+      tip: 'Meaning = "All Praise and Thanks belong to Allah, Lord of the Worlds".',
+      detail: 'Saying Alhamdulillah fills our heart with warm gratitude for every blessing: our eyes, our heartbeat, our safe home, and our family.',
+      iconName: 'Sun',
+      repeatPhrase: 'Alhamdulillah — Thank You, Allah!',
+      sensoryTip: 'Place a warm hand over your chest, feel your gentle heartbeat, and smile as you say Alhamdulillah.',
+      actionPrompt: 'Name one blessing you love today and say "Alhamdulillah".'
+    },
+    {
+      stepNumber: 4,
+      title: 'Step 4: Allahu Akbar (Allah is the Greatest)',
+      instruction: 'Say "Allahu Akbar" during prayer and whenever you need courage to face a loud noise, a worry, or a big challenge.',
+      arabicTerm: 'ٱللَّهُ أَكْبَرُ',
+      arabicTransliteration: 'Allahu Akbar',
+      tip: 'Meaning = "Allah is the Greatest" (Greater than any fear or problem).',
+      detail: 'When things feel scary or overwhelming, Allahu Akbar reminds us that Allah is stronger and more powerful than any worry.',
+      iconName: 'Shield',
+      repeatPhrase: 'Allahu Akbar — Allah is greater than all worries.',
+      sensoryTip: 'Stand tall with relaxed shoulders, knowing you are protected and cared for by Allah.',
+      actionPrompt: 'Say "Allahu Akbar" with calm strength and confidence.'
+    },
+    {
+      stepNumber: 5,
+      title: 'Step 5: La ilaha illallah (There is No God Except Allah)',
+      instruction: 'Recite the foundational declaration that only One true God created and sustains the universe.',
+      arabicTerm: 'لَا إِلَٰهَ إِلَّا ٱللَّٰهُ',
+      arabicTransliteration: 'Laa ilaaha ill-Allah',
+      tip: 'Meaning = "There is no deity worthy of worship except Allah" (The Key to Jannah).',
+      detail: 'The Prophet ﷺ taught that "La ilaha illallah" is the highest and most noble phrase in our entire Deen.',
+      iconName: 'Key',
+      repeatPhrase: 'Laa ilaaha ill-Allah — One God, One Creator.',
+      sensoryTip: 'Feel the peaceful focus of your breath aligning with the steady truth in your heart.',
+      actionPrompt: 'Tap one finger gently on your knee as you recite "Laa ilaaha ill-Allah".'
+    },
+    {
+      stepNumber: 6,
+      title: 'Step 6: Astaghfirullah (I Seek Allah’s Forgiveness & Fresh Start)',
+      instruction: 'Say "Astaghfirullah" when you make a mistake, feel angry, or want a clean, fresh emotional reset.',
+      arabicTerm: 'أَسْتَغْفِرُ ٱللَّٰهَ',
+      arabicTransliteration: 'Astaghfirullah',
+      tip: 'Meaning = "I ask Allah to forgive me and give my heart a clean fresh start".',
+      detail: 'Mistakes are normal when learning! Allah loves when we say Astaghfirullah because it washes our heart clean with love and mercy.',
+      iconName: 'RotateCcw',
+      repeatPhrase: 'Astaghfirullah — Allah wipes my heart clean.',
+      sensoryTip: 'Inhale fresh calm air through your nose, exhale slowly, and let go of any tension as you say Astaghfirullah.',
+      actionPrompt: 'Take a soft reset breath and whisper "Astaghfirullah".'
+    },
+    {
+      stepNumber: 7,
+      title: 'Step 7: La hawla wa la quwwata illa billah (All Strength Comes from Allah)',
+      instruction: 'Say this phrase whenever a task feels difficult or when you need gentle inner energy.',
+      arabicTerm: 'لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِٱللَّٰهِ',
+      arabicTransliteration: 'Laa hawla wa laa quwwata illaa billaah',
+      tip: 'Meaning = "There is no power and no strength except through Allah" (A Treasure of Jannah).',
+      detail: 'We do not have to carry hard things alone. When we recite this Dhikr, Allah sends us strength and ease.',
+      iconName: 'Mountain',
+      repeatPhrase: 'Laa hawla wa laa quwwata illaa billaah — Allah gives me strength.',
+      sensoryTip: 'Picture a sturdy, deep-rooted green tree standing calm and safe through the breeze.',
+      actionPrompt: 'Whisper this treasure of Jannah and feel calm energy in your hands.'
+    },
+    {
+      stepNumber: 8,
+      title: 'Step 8: Salawat on Prophet Muhammad ﷺ (Sending Peace & Blessings)',
+      instruction: 'Send peace and blessings upon our kind and gentle Prophet Muhammad ﷺ.',
+      arabicTerm: 'ٱللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ',
+      arabicTransliteration: 'Allahumma salli \'ala Muhammadin wa \'ala aali Muhammad',
+      tip: 'Meaning = "O Allah, send peace, blessings, and honor upon Muhammad and his family".',
+      detail: 'Whenever we say Salawat, Allah sends us 10 blessings of mercy and peace in return.',
+      iconName: 'Heart',
+      repeatPhrase: 'Allahumma salli \'ala Muhammad — Peace upon our beloved Prophet.',
+      sensoryTip: 'Feel the warmth of love and gentle kindness radiating in your heart.',
+      actionPrompt: 'Say "Sallallahu \'Alayhi wa Sallam" (Peace and blessings upon him).'
+    }
+  ],
+  activity: {
+    title: 'Interactive Dhikr Step Journey',
+    type: 'step-sequence',
+    instructions: 'Check off each Dhikr step as you recite it with calm focus!',
+    actionItems: [
+      '1. Step 1-3: Daily Three (SubhanAllah, Alhamdulillah, Allahu Akbar) x3',
+      '2. Step 4-5: Heart Reset & Fresh Start (Astaghfirullah & Bismillah)',
+      '3. Step 6-7: Jannah Treasures (La ilaha illallah & La hawla)',
+      '4. Step 8: Loving blessings upon Prophet Muhammad (Salawat)'
+    ],
+    interestConnection: 'Tracking your peaceful Dhikr routine like completing a celestial explorer checklist.',
+    completionPrompt: 'Master of Calming Dhikr & Peace of Heart Badge earned!'
+  },
+  reviewQuestion: {
+    question: 'What is the beautiful meaning of saying "SubhanAllah"?',
+    hint: 'Think about how perfect and flawless Allah is in creating everything.',
+    options: [
+      {
+        id: 'dhikr-opt-1',
+        text: 'Glory be to Allah (How Perfect and Flawless Allah Is)',
+        isCorrect: true,
+        explanation: 'SubhanAllah means "Glory be to Allah" — reminding us that Allah is completely perfect, flawless, and the Creator of all beautiful things!'
+      },
+      {
+        id: 'dhikr-opt-2',
+        text: 'Time to go to sleep',
+        isCorrect: false,
+        explanation: 'Before sleeping we say specific bedtime duas, but SubhanAllah means Glory be to Allah.'
+      },
+      {
+        id: 'dhikr-opt-3',
+        text: 'Washing our hands with water',
+        isCorrect: false,
+        explanation: 'Washing our hands is part of Wudu; SubhanAllah is a word of Dhikr praising Allah.'
+      }
+    ],
+    correctAnswerExplanation: 'SubhanAllah means "Glory be to Allah" — reminding us that Allah is completely perfect and free from any imperfection.'
+  },
+  storyContent: {
+    title: 'The Gentle Path of Whispered Remembrance',
+    theme: 'Peace of Heart Through Step-by-Step Dhikr',
+    intro: 'Come along with a gentle traveler through a quiet, glowing garden where each Dhikr word blooms like a soothing blossom of light.',
+    slides: [
+      {
+        id: 'dhikr-story-1',
+        chapterNumber: 1,
+        title: 'Chapter 1: The Morning Key — Bismillah',
+        text: 'As the golden dawn touches the quiet earth, the traveler takes a calm breath and whispers "Bismillah". Starting with Allah’s name brings immediate safety and gentle blessings to the whole morning.',
+        interestConnection: 'Like starting a spacecraft launch checklist with calm precision.',
+        islamicTeaching: 'Saying Bismillah before every action invites Barakah (divine blessing).',
+        iconName: 'BookOpen',
+        actionPrompt: 'Say "Bismillah" before you take your next sip of water.'
+      },
+      {
+        id: 'dhikr-story-2',
+        chapterNumber: 2,
+        title: 'Chapter 2: Wonder in the Stars — SubhanAllah',
+        text: 'Looking up at the twinkling night sky and the gentle moon, the traveler says "SubhanAllah". Every planet, star, and flower is designed with flawless perfection by Allah.',
+        interestConnection: 'Admiring the flawless geometry of distant galaxies and constellations.',
+        islamicTeaching: 'SubhanAllah glorifies Allah above any weakness or imperfection.',
+        iconName: 'Sparkles',
+        actionPrompt: 'Look at something in nature and say "SubhanAllah".'
+      },
+      {
+        id: 'dhikr-story-3',
+        chapterNumber: 3,
+        title: 'Chapter 3: The Warm Sunshine — Alhamdulillah',
+        text: 'Sitting down to enjoy a fresh meal and cool water, warmth fills the traveler’s chest: "Alhamdulillah!" Gratitude for our heartbeat and safe home makes every blessing shine brighter.',
+        interestConnection: 'Like charging a friendly robot’s battery with bright solar energy.',
+        islamicTeaching: 'Alhamdulillah expresses sincere praise and thanks to Allah.',
+        iconName: 'Sun',
+        actionPrompt: 'Smile and whisper "Alhamdulillah" for your favorite family memory.'
+      },
+      {
+        id: 'dhikr-story-4',
+        chapterNumber: 4,
+        title: 'Chapter 4: The Sturdy Shield — Allahu Akbar',
+        text: 'When thunder rumbles or a loud noise sounds, the traveler stands firm with "Allahu Akbar". Allah is greater, kinder, and stronger than any fear or worry.',
+        interestConnection: 'Like holding an unbreakable superhero shield of pure light.',
+        islamicTeaching: 'Allahu Akbar reminds us of Allah\'s supreme greatness and protection.',
+        iconName: 'Shield',
+        actionPrompt: 'Say "Allahu Akbar" with calm strength in your voice.'
+      },
+      {
+        id: 'dhikr-story-5',
+        chapterNumber: 5,
+        title: 'Chapter 5: Clean Rain & Fresh Start — Astaghfirullah',
+        text: 'When a mistake happens, a gentle cooling rain falls as the traveler whispers "Astaghfirullah". Allah wipes the slate clean with endless love, giving our heart a fresh, peaceful start.',
+        interestConnection: 'Like pressing the peaceful reset button on a simulator.',
+        islamicTeaching: 'Astaghfirullah brings forgiveness, peace, and spiritual renewal.',
+        iconName: 'RotateCcw',
+        actionPrompt: 'Take a soft reset breath and say "Astaghfirullah".'
+      }
+    ],
+    conclusion: 'With each Dhikr word, the traveler’s heart stays calm, gentle, and filled with light. Remember: Allah is always near whenever we whisper His name.',
+    reflectionQuestion: 'Which Dhikr word feels most comforting to your heart when you need a calm moment?'
+  },
+  visualContent: {
+    title: 'Daily Dhikr Visual Step Cards',
+    subtitle: '8 Step-by-Step Words of Remembrance with Arabic, English, Translations, and Meaning Pictures',
+    cards: [
+      {
+        stepNumber: 1,
+        title: 'Step 1: Bismillah',
+        simpleSentence: 'Say before eating, drinking, and starting tasks to welcome blessing.',
+        arabicTerm: 'بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ',
+        arabicTransliteration: 'Bismillah ir-Rahman ir-Raheem',
+        englishTranslation: 'In the Name of Allah (Starting with Blessings)',
+        iconName: 'BookOpen',
+        visualHint: 'An open holy book with glowing rays of light and starting blessings',
+        badge: 'Step 1 • Beginning'
+      },
+      {
+        stepNumber: 2,
+        title: 'Step 2: SubhanAllah',
+        simpleSentence: 'Say when admiring beautiful stars, animals, mountains, and wonders.',
+        arabicTerm: 'سُبْحَانَ ٱللَّهِ',
+        arabicTransliteration: 'SubhanAllah',
+        englishTranslation: 'Glory be to Allah (How Perfect & Flawless Allah Is)',
+        iconName: 'Sparkles',
+        visualHint: 'Glittering night stars and glowing crescent moon in peaceful sky',
+        badge: 'Step 2 • Wonder'
+      },
+      {
+        stepNumber: 3,
+        title: 'Step 3: Alhamdulillah',
+        simpleSentence: 'Say when feeling happy, after meals, drinking water, and after sneezing.',
+        arabicTerm: 'ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ',
+        arabicTransliteration: 'Alhamdulillahi Rabbil \'Alameen',
+        englishTranslation: 'All Praise and Thanks to Allah (Grateful Heart)',
+        iconName: 'Sun',
+        visualHint: 'Warm beaming golden sun shining over green meadows of blessings',
+        badge: 'Step 3 • Gratitude'
+      },
+      {
+        stepNumber: 4,
+        title: 'Step 4: Allahu Akbar',
+        simpleSentence: 'Say during prayer and whenever you need calm courage against fear.',
+        arabicTerm: 'ٱللَّهُ أَكْبَرُ',
+        arabicTransliteration: 'Allahu Akbar',
+        englishTranslation: 'Allah is the Greatest (Bigger than Any Fear)',
+        iconName: 'Shield',
+        visualHint: 'A strong golden protective shield standing firm against storm clouds',
+        badge: 'Step 4 • Courage'
+      },
+      {
+        stepNumber: 5,
+        title: 'Step 5: La ilaha illallah',
+        simpleSentence: 'Declare that only One true God created and cares for all of us.',
+        arabicTerm: 'لَا إِلَٰهَ إِلَّا ٱللَّٰهُ',
+        arabicTransliteration: 'Laa ilaaha ill-Allah',
+        englishTranslation: 'There is No God Except Allah (The Key to Jannah)',
+        iconName: 'Key',
+        visualHint: 'A shining golden key opening the peaceful gateway of Jannah',
+        badge: 'Step 5 • Faith Key'
+      },
+      {
+        stepNumber: 6,
+        title: 'Step 6: Astaghfirullah',
+        simpleSentence: 'Say when making a mistake to reset your heart with forgiveness and love.',
+        arabicTerm: 'أَسْتَغْفِرُ ٱللَّٰهَ',
+        arabicTransliteration: 'Astaghfirullah',
+        englishTranslation: 'I Seek Allah’s Forgiveness (Fresh Clean Start)',
+        iconName: 'RotateCcw',
+        visualHint: 'Gentle pure raindrops washing a green leaf clean and fresh',
+        badge: 'Step 6 • Fresh Reset'
+      },
+      {
+        stepNumber: 7,
+        title: 'Step 7: La hawla wa la quwwata illa billah',
+        simpleSentence: 'Say when a task feels hard to ask Allah for gentle inner strength.',
+        arabicTerm: 'لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِٱللَّٰهِ',
+        arabicTransliteration: 'Laa hawla wa laa quwwata illaa billaah',
+        englishTranslation: 'All Strength Comes from Allah (Treasure of Jannah)',
+        iconName: 'Mountain',
+        visualHint: 'A steadfast mountain standing calm and majestic beneath the clouds',
+        badge: 'Step 7 • Inner Strength'
+      },
+      {
+        stepNumber: 8,
+        title: 'Step 8: Salawat on the Prophet ﷺ',
+        simpleSentence: 'Send loving peace and blessings upon our kind Prophet Muhammad ﷺ.',
+        arabicTerm: 'ٱللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ',
+        arabicTransliteration: 'Allahumma salli \'ala Muhammad',
+        englishTranslation: 'Peace & Blessings upon Prophet Muhammad ﷺ',
+        iconName: 'Heart',
+        visualHint: 'A warm glowing heart surrounded by gentle blossoms and light',
+        badge: 'Step 8 • Loving Peace'
+      }
+    ],
+    completionBadge: 'Dhikr Remembrance Champion • Alhamdulillah!'
+  },
+  stepContent: {
+    title: 'Daily Dhikr Step-by-Step Practice Guide',
+    goal: 'Recite all 8 Dhikr phrases step-by-step with calm pacing and clear meanings.',
+    steps: [
+      {
+        stepNumber: 1,
+        title: '1. Bismillah (In the Name of Allah)',
+        instruction: 'Whisper "Bismillah" at the start of any activity.',
+        detail: 'Invites peace, Barakah, and protection into whatever you begin.',
+        repeatPhrase: 'Bismillah — In the Name of Allah.',
+        iconName: 'BookOpen',
+        sensoryTip: 'Pause for 2 seconds before eating or opening a book to say Bismillah.'
+      },
+      {
+        stepNumber: 2,
+        title: '2. SubhanAllah (Glory be to Allah)',
+        instruction: 'Say "SubhanAllah" when seeing beautiful animals, stars, or nature.',
+        detail: 'Remembers that Allah makes everything with flawless perfection.',
+        repeatPhrase: 'SubhanAllah — How perfect is Allah.',
+        iconName: 'Sparkles',
+        sensoryTip: 'Touch your thumb to your index finger gently as you say SubhanAllah.'
+      },
+      {
+        stepNumber: 3,
+        title: '3. Alhamdulillah (All Praise to Allah)',
+        instruction: 'Say "Alhamdulillah" whenever you feel grateful, happy, or full.',
+        detail: 'Fills your heart with deep satisfaction for all your blessings.',
+        repeatPhrase: 'Alhamdulillah — Thank You, Allah.',
+        iconName: 'Sun',
+        sensoryTip: 'Feel the warm air exhaling gently from your chest as you praise Allah.'
+      },
+      {
+        stepNumber: 4,
+        title: '4. Allahu Akbar (Allah is the Greatest)',
+        instruction: 'Say "Allahu Akbar" when praying and when needing bravery.',
+        detail: 'Reminds us that Allah is bigger and stronger than any fear or worry.',
+        repeatPhrase: 'Allahu Akbar — Allah is the Greatest.',
+        iconName: 'Shield',
+        sensoryTip: 'Keep your hands open and relaxed at your sides.'
+      },
+      {
+        stepNumber: 5,
+        title: '5. La ilaha illallah (There is No God but Allah)',
+        instruction: 'Recite the foundational declaration of faith.',
+        detail: 'The greatest phrase in Islam and the key to Jannah.',
+        repeatPhrase: 'Laa ilaaha ill-Allah.',
+        iconName: 'Key',
+        sensoryTip: 'Focus your mind on the simple, singular truth of One loving Creator.'
+      },
+      {
+        stepNumber: 6,
+        title: '6. Astaghfirullah (I Seek Allah\'s Forgiveness)',
+        instruction: 'Say "Astaghfirullah" when making a mistake or needing a reset.',
+        detail: 'Cleanses our heart and restores calmness and peace.',
+        repeatPhrase: 'Astaghfirullah — A clean fresh start.',
+        iconName: 'RotateCcw',
+        sensoryTip: 'Take a slow, deep breath in and exhale all tension.'
+      },
+      {
+        stepNumber: 7,
+        title: '7. La hawla wa la quwwata illa billah (All Strength from Allah)',
+        instruction: 'Say this treasure when facing a challenging task.',
+        detail: 'Gives us patience and gentle resilience through Allah’s help.',
+        repeatPhrase: 'Laa hawla wa laa quwwata illaa billaah.',
+        iconName: 'Mountain',
+        sensoryTip: 'Feel your feet grounded on the floor, sturdy like a mountain.'
+      },
+      {
+        stepNumber: 8,
+        title: '8. Salawat on the Prophet ﷺ (Peace & Blessings)',
+        instruction: 'Send peace and blessings upon Prophet Muhammad ﷺ.',
+        detail: 'Brings 10 mercies from Allah and fills your heart with warmth.',
+        repeatPhrase: 'Allahumma salli \'ala Muhammad.',
+        iconName: 'Heart',
+        sensoryTip: 'Smile softly as you remember our Prophet’s gentle character.'
+      }
+    ],
+    successMessage: 'MashaAllah! You have completed all 8 steps of Daily Dhikr with peace and clarity.'
+  },
+  flashcardContent: {
+    title: 'Daily Dhikr Flashcards',
+    cards: [
+      {
+        id: 'dhikr-fc-1',
+        frontTerm: 'Bismillah',
+        frontArabic: 'بِسْمِ ٱللَّهِ',
+        frontTransliteration: 'Bismillah',
+        frontSubtext: 'Starting Action Dhikr',
+        backDefinition: 'In the Name of Allah. We say this before eating, drinking, reading, or starting any task to welcome peace and blessing.',
+        backInterestAnalogy: 'Like entering a warm, welcoming home with the master key of blessing.',
+        backActionOrQuestion: 'When do you say Bismillah during your day?',
+        iconName: 'BookOpen'
+      },
+      {
+        id: 'dhikr-fc-2',
+        frontTerm: 'SubhanAllah',
+        frontArabic: 'سُبْحَانَ ٱللَّهِ',
+        frontTransliteration: 'SubhanAllah',
+        frontSubtext: 'Wonder & Praise Dhikr',
+        backDefinition: 'Glory be to Allah. Allah is free from any fault, flaw, or weakness. We say it when looking at the stars, flowers, and animals.',
+        backInterestAnalogy: 'Like gazing through a high-powered telescope at the flawless beauty of the cosmos.',
+        backActionOrQuestion: 'Look at the sky or a plant and say SubhanAllah!',
+        iconName: 'Sparkles'
+      },
+      {
+        id: 'dhikr-fc-3',
+        frontTerm: 'Alhamdulillah',
+        frontArabic: 'ٱلْحَمْدُ لِلَّهِ',
+        frontTransliteration: 'Alhamdulillah',
+        frontSubtext: 'Gratitude & Thanks Dhikr',
+        backDefinition: 'All praise and thanks to Allah. We say it when we are happy, after drinking water, finishing food, or waking up safely.',
+        backInterestAnalogy: 'Like a warm glowing sunbeam filling your heart with cozy appreciation.',
+        backActionOrQuestion: 'Name 3 things you are grateful for today and say Alhamdulillah!',
+        iconName: 'Sun'
+      },
+      {
+        id: 'dhikr-fc-4',
+        frontTerm: 'Allahu Akbar',
+        frontArabic: 'ٱللَّهُ أَكْبَرُ',
+        frontTransliteration: 'Allahu Akbar',
+        frontSubtext: 'Strength & Courage Dhikr',
+        backDefinition: 'Allah is the Greatest. Allah is bigger and stronger than any challenge, scary shadow, or worry.',
+        backInterestAnalogy: 'Like a sturdy shield protecting a gentle kingdom from any loud storm.',
+        backActionOrQuestion: 'Stand tall with courage and whisper Allahu Akbar.',
+        iconName: 'Shield'
+      },
+      {
+        id: 'dhikr-fc-5',
+        frontTerm: 'La ilaha illallah',
+        frontArabic: 'لَا إِلَٰهَ إِلَّا ٱللَّٰهُ',
+        frontTransliteration: 'Laa ilaaha ill-Allah',
+        frontSubtext: 'Key of Faith Dhikr',
+        backDefinition: 'There is no god except Allah. The most sacred declaration of faith that anchors our heart to the One Creator.',
+        backInterestAnalogy: 'The golden master key that unlocks the gates of Jannah.',
+        backActionOrQuestion: 'What does La ilaha illallah mean? (There is no god except Allah)',
+        iconName: 'Key'
+      },
+      {
+        id: 'dhikr-fc-6',
+        frontTerm: 'Astaghfirullah',
+        frontArabic: 'أَسْتَغْفِرُ ٱللَّٰهَ',
+        frontTransliteration: 'Astaghfirullah',
+        frontSubtext: 'Fresh Start & Forgiveness Dhikr',
+        backDefinition: 'I ask Allah for forgiveness. A gentle reset button that washes away mistakes and brings fresh emotional peace.',
+        backInterestAnalogy: 'Like cool pure rainwater washing clean a dusty green leaf.',
+        backActionOrQuestion: 'Take a soft breath and practice a calm heart reset with Astaghfirullah.',
+        iconName: 'RotateCcw'
+      },
+      {
+        id: 'dhikr-fc-7',
+        frontTerm: 'La hawla wa la quwwata illa billah',
+        frontArabic: 'لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِٱللَّٰهِ',
+        frontTransliteration: 'Laa hawla wa laa quwwata illaa billaah',
+        frontSubtext: 'Inner Strength Treasure',
+        backDefinition: 'There is no power and no strength except with Allah. A treasure from under the Throne of Allah for moments when we need energy and patience.',
+        backInterestAnalogy: 'Like a deep mountain root that holds firm through every breeze.',
+        backActionOrQuestion: 'Say this treasure whenever something feels difficult or tiring.',
+        iconName: 'Mountain'
+      },
+      {
+        id: 'dhikr-fc-8',
+        frontTerm: 'Salawat on the Prophet ﷺ',
+        frontArabic: 'ٱللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ',
+        frontTransliteration: 'Allahumma salli \'ala Muhammad',
+        frontSubtext: 'Peace & Love Dhikr',
+        backDefinition: 'O Allah, send peace and blessings upon Prophet Muhammad ﷺ. Brings 10 blessings of peace and mercy from Allah.',
+        backInterestAnalogy: 'Like sending a loving bouquet of gentle light to our beloved teacher.',
+        backActionOrQuestion: 'Send a blessing upon the Prophet ﷺ with a peaceful smile.',
+        iconName: 'Heart'
+      }
+    ]
+  },
+  parentTips: {
+    summary: 'Evidence-based structured guide for teaching Daily Dhikr words in discrete, non-overwhelming steps. Every phrase is presented with clear Arabic script, phonetic transliteration, explicit English translations, and meaning-matched imagery.',
+    reviewStrategy: 'Use the PECS schedule strip to practice the 3-step morning Dhikr routine (SubhanAllah ➔ Alhamdulillah ➔ Allahu Akbar) or single-card focus mode with the tactile bead tap counter.',
+    repetitionTip: 'Practice one Dhikr phrase per day in natural daily routines (e.g. Bismillah before snacks, Alhamdulillah after drinking, Astaghfirullah during sensory resets).',
+    activitySuggestion: 'Use the interactive bead tap counter to practice counting 3 or 33 praises without sensory-overwhelming alarms.',
+    sensoryBreakTip: 'If the learner feels fatigued, switch to Single-Card Focus Mode or Calm Mode with 0.8x speech pacing.',
+    nextFormatRecommendation: 'Explore PECS Board for visual scheduling or Comic / Visual Mode for full-screen step cards.'
+  },
+  disclaimer: 'Bridge is an educational support tool. It does not provide medical, diagnostic, therapeutic, or professional special-education advice. Every learner is different, and parents and educators should choose the approaches that work best for their learner.'
+};
 

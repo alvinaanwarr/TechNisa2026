@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { LessonData, LessonStep } from '../../types';
 import { AudioPlayer } from '../AudioPlayer';
 import { DynamicIcon } from '../DynamicIcon';
-import { CartoonCompanion, CharacterTheme } from '../CartoonCompanion';
+import { CartoonCompanion, CharacterTheme, getRandomCompanionMessage } from '../CartoonCompanion';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { STORAGE_KEYS } from '../../services/storageService';
 import {
@@ -445,12 +445,13 @@ export const InteractiveLessonCardView: React.FC<InteractiveLessonCardViewProps>
               <CartoonCompanion
                 theme={characterTheme}
                 size="md"
+                stepNumber={currentStepData.stepNumber}
                 actionMessage={
                   completedSteps.includes(currentStepData.stepNumber)
                     ? 'MashaAllah! You mastered this step! Ready for the next one!'
                     : currentStepData.repeatPhrase
                     ? `Let's practice saying "${currentStepData.repeatPhrase}" together!`
-                    : `You are doing amazing! Take your time with step ${currentStepData.stepNumber}.`
+                    : undefined
                 }
                 interactive={true}
                 onSelectTheme={(t) => setCharacterTheme(t)}
