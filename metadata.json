@@ -1,0 +1,8 @@
+{
+  "name": "Remix Bridge - Adaptive Islamic Learning",
+  "description": "An AI-powered adaptive Islamic learning platform designed for neurodivergent children, adapting lessons into stories, visual cards, step-by-step guides, and flashcards based on individual learning preferences.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
