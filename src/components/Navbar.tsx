@@ -56,34 +56,34 @@ export const Navbar: React.FC<NavbarProps> = ({
           : 'bg-white/90 border-b border-[#93c5fd]/50'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-18">
+      <div className="w-full max-w-[100rem] mx-auto px-2.5 sm:px-4 lg:px-6">
+        <div className="flex items-center justify-between h-14 sm:h-16 gap-1.5 sm:gap-3">
           {/* Logo Brand */}
           <div
             id="brand-logo-btn"
             onClick={() => handleNavClick('home')}
-            className="cursor-pointer flex items-center gap-2.5 sm:gap-3 group select-none"
+            className="cursor-pointer flex items-center gap-1.5 sm:gap-2 group select-none shrink-0"
           >
             <div
-              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-2xl text-white flex items-center justify-center shadow-xs transition-colors ${
+              className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl text-white flex items-center justify-center shadow-xs transition-colors shrink-0 ${
                 isCalmMode
                   ? 'bg-[#99AFD7] group-hover:bg-[#869EC9]'
                   : 'bg-[#1e3a8a] group-hover:bg-[#60a5fa]'
               }`}
             >
-              <span className="font-extrabold text-lg sm:text-xl tracking-tight font-heading">B</span>
+              <span className="font-extrabold text-sm sm:text-base tracking-tight font-heading">B</span>
             </div>
             <div>
-              <div className="flex items-center gap-1.5 sm:gap-2">
+              <div className="flex items-center gap-1 sm:gap-1.5">
                 <span
-                  className={`text-xl sm:text-2xl font-bold tracking-tight font-heading ${
+                  className={`text-base sm:text-lg font-bold tracking-tight font-heading whitespace-nowrap ${
                     isCalmMode ? 'text-slate-800' : 'text-[#1e3a8a]'
                   }`}
                 >
                   Bridge
                 </span>
                 <span
-                  className={`text-3xs sm:text-2xs font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full border ${
+                  className={`text-[9px] sm:text-3xs font-extrabold uppercase tracking-wider px-1.5 py-0.2 rounded-md border whitespace-nowrap ${
                     isCalmMode
                       ? 'text-[#344D76] bg-[#E8EEF8] border-[#99AFD7]/40'
                       : 'text-[#1e3a8a] bg-[#bae6fd] border-[#7dd3fc]'
@@ -93,7 +93,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </span>
               </div>
               <p
-                className={`text-3xs sm:text-2xs font-medium hidden sm:block ${
+                className={`text-[10px] font-medium hidden 2xl:block whitespace-nowrap ${
                   isCalmMode ? 'text-slate-500' : 'text-[#1e3a8a]/70'
                 }`}
               >
@@ -103,12 +103,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2">
+          <nav className="hidden lg:flex items-center gap-1 min-w-0 flex-1 justify-center px-1 overflow-hidden">
             <button
               id="nav-home-btn"
               type="button"
               onClick={() => handleNavClick('home')}
-              className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
+              className={`px-2 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
                 currentView === 'home'
                   ? isCalmMode
                     ? 'bg-[#E8EEF8] text-[#344D76] border border-[#99AFD7]/50 shadow-2xs font-bold'
@@ -125,7 +125,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="nav-deeds-btn"
               type="button"
               onClick={() => handleNavClick('gooddeeds')}
-              className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 ${
+              className={`px-2 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1 ${
                 currentView === 'gooddeeds'
                   ? isCalmMode
                     ? 'bg-[#344D76] text-white shadow-2xs'
@@ -135,7 +135,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     : 'text-emerald-800 hover:text-emerald-900 hover:bg-emerald-100/70'
               }`}
             >
-              <Heart className={`w-3.5 h-3.5 ${currentView === 'gooddeeds' ? 'text-white fill-current' : 'text-emerald-600 fill-emerald-500'}`} />
+              <Heart className={`w-3 h-3 shrink-0 ${currentView === 'gooddeeds' ? 'text-white fill-current' : 'text-emerald-600 fill-emerald-500'}`} />
               <span>Good Deeds</span>
             </button>
 
@@ -143,7 +143,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="nav-sensory-btn"
               type="button"
               onClick={() => handleNavClick('sensory')}
-              className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 ${
+              className={`px-2 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1 ${
                 currentView === 'sensory'
                   ? isCalmMode
                     ? 'bg-[#344D76] text-white shadow-2xs'
@@ -153,7 +153,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     : 'text-[#1e3a8a] hover:text-[#1e3a8a] hover:bg-[#bae6fd]/50'
               }`}
             >
-              <Headphones className={`w-3.5 h-3.5 ${currentView === 'sensory' ? 'text-white' : isCalmMode ? 'text-[#5D7CAE]' : 'text-[#60a5fa]'}`} />
+              <Headphones className={`w-3 h-3 shrink-0 ${currentView === 'sensory' ? 'text-white' : isCalmMode ? 'text-[#5D7CAE]' : 'text-[#60a5fa]'}`} />
               <span>Sensory Prep</span>
             </button>
 
@@ -161,7 +161,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="nav-prophets-btn"
               type="button"
               onClick={() => handleNavClick('prophets')}
-              className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 ${
+              className={`px-2 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1 ${
                 currentView === 'prophets'
                   ? isCalmMode
                     ? 'bg-[#344D76] text-white shadow-2xs'
@@ -171,26 +171,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                     : 'text-[#1e3a8a] hover:text-[#1e3a8a] hover:bg-[#bae6fd]/50'
               }`}
             >
-              <Sparkles className={`w-3.5 h-3.5 ${currentView === 'prophets' ? 'text-white' : isCalmMode ? 'text-[#5D7CAE]' : 'text-[#60a5fa]'}`} />
+              <Sparkles className={`w-3 h-3 shrink-0 ${currentView === 'prophets' ? 'text-white' : isCalmMode ? 'text-[#5D7CAE]' : 'text-[#60a5fa]'}`} />
               <span>25 Prophets</span>
-            </button>
-
-            <button
-              id="nav-favorites-btn"
-              type="button"
-              onClick={() => handleNavClick('favorites')}
-              className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 ${
-                currentView === 'favorites'
-                  ? isCalmMode
-                    ? 'bg-[#344D76] text-white shadow-2xs'
-                    : 'bg-[#1e3a8a] text-white shadow-2xs'
-                  : isCalmMode
-                    ? 'text-[#344D76] hover:text-slate-900 hover:bg-[#E8EEF8]'
-                    : 'text-[#1e3a8a] hover:text-[#1e3a8a] hover:bg-[#bae6fd]/50'
-              }`}
-            >
-              <Award className={`w-3.5 h-3.5 ${currentView === 'favorites' ? 'text-white' : isCalmMode ? 'text-[#5D7CAE]' : 'text-[#60a5fa]'}`} />
-              <span>Favourites</span>
             </button>
 
             {hasActiveLesson && (
@@ -198,7 +180,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 id="nav-active-lesson-btn"
                 type="button"
                 onClick={() => handleNavClick('lesson')}
-                className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 ${
+                className={`px-2 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1 ${
                   currentView === 'lesson'
                     ? isCalmMode
                       ? 'bg-[#E0E7F5] text-[#344D76] border border-[#99AFD7]/60 shadow-2xs font-extrabold'
@@ -208,7 +190,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       : 'text-[#1e3a8a]/80 hover:text-[#1e3a8a] hover:bg-[#bae6fd]/50'
                 }`}
               >
-                <BookOpen className={`w-3.5 h-3.5 ${isCalmMode ? 'text-[#5D7CAE]' : 'text-[#60a5fa]'}`} />
+                <BookOpen className={`w-3 h-3 shrink-0 ${isCalmMode ? 'text-[#5D7CAE]' : 'text-[#60a5fa]'}`} />
                 <span>Current Lesson</span>
               </button>
             )}
@@ -217,7 +199,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="nav-create-btn"
               type="button"
               onClick={() => handleNavClick('create')}
-              className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 ${
+              className={`px-2 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1 ${
                 currentView === 'create'
                   ? isCalmMode
                     ? 'bg-[#99AFD7] text-white shadow-2xs'
@@ -227,15 +209,33 @@ export const Navbar: React.FC<NavbarProps> = ({
                     : 'text-[#1e3a8a] hover:text-[#1e3a8a] hover:bg-[#bae6fd]/50'
               }`}
             >
-              <PlusCircle className={`w-3.5 h-3.5 ${currentView === 'create' ? 'text-white' : isCalmMode ? 'text-[#5D7CAE]' : 'text-[#60a5fa]'}`} />
+              <PlusCircle className={`w-3 h-3 shrink-0 ${currentView === 'create' ? 'text-white' : isCalmMode ? 'text-[#5D7CAE]' : 'text-[#60a5fa]'}`} />
               <span>Create</span>
+            </button>
+
+            <button
+              id="nav-favorites-btn"
+              type="button"
+              onClick={() => handleNavClick('favorites')}
+              className={`hidden xl:flex px-2 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-all items-center gap-1 ${
+                currentView === 'favorites'
+                  ? isCalmMode
+                    ? 'bg-[#344D76] text-white shadow-2xs'
+                    : 'bg-[#1e3a8a] text-white shadow-2xs'
+                  : isCalmMode
+                    ? 'text-[#344D76] hover:text-slate-900 hover:bg-[#E8EEF8]'
+                    : 'text-[#1e3a8a] hover:text-[#1e3a8a] hover:bg-[#bae6fd]/50'
+              }`}
+            >
+              <Award className={`w-3 h-3 shrink-0 ${currentView === 'favorites' ? 'text-white' : isCalmMode ? 'text-[#5D7CAE]' : 'text-[#60a5fa]'}`} />
+              <span>Favourites</span>
             </button>
 
             <button
               id="nav-community-btn"
               type="button"
               onClick={() => handleNavClick('community')}
-              className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 ${
+              className={`hidden 2xl:flex px-2 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-all items-center gap-1 ${
                 currentView === 'community'
                   ? isCalmMode
                     ? 'bg-[#E8EEF8] text-[#344D76] border border-[#99AFD7]/50 shadow-2xs font-extrabold'
@@ -245,7 +245,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     : 'text-[#1e3a8a]/80 hover:text-[#1e3a8a] hover:bg-[#bae6fd]/50'
               }`}
             >
-              <MessageSquare className={`w-3.5 h-3.5 ${isCalmMode ? 'text-[#5D7CAE]' : 'text-[#60a5fa]'}`} />
+              <MessageSquare className={`w-3 h-3 shrink-0 ${isCalmMode ? 'text-[#5D7CAE]' : 'text-[#60a5fa]'}`} />
               <span>Community</span>
             </button>
 
@@ -253,7 +253,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="nav-profile-btn"
               type="button"
               onClick={() => handleNavClick('learner-profile')}
-              className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all flex items-center gap-1.5 ${
+              className={`hidden 2xl:flex px-2 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-all items-center gap-1 ${
                 currentView === 'learner-profile'
                   ? isCalmMode
                     ? 'bg-[#E8EEF8] text-[#344D76] border border-[#99AFD7]/40 shadow-2xs font-bold'
@@ -263,48 +263,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                     : 'text-[#1e3a8a]/80 hover:text-[#1e3a8a] hover:bg-[#bae6fd]/50'
               }`}
             >
-              <User className={`w-3.5 h-3.5 ${isCalmMode ? 'text-[#5D7CAE]' : 'text-[#60a5fa]'}`} />
+              <User className={`w-3 h-3 shrink-0 ${isCalmMode ? 'text-[#5D7CAE]' : 'text-[#60a5fa]'}`} />
               <span>Learners</span>
-            </button>
-
-            <button
-              id="nav-about-btn"
-              type="button"
-              onClick={() => handleNavClick('about')}
-              className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                currentView === 'about'
-                  ? isCalmMode
-                    ? 'bg-[#E8EEF8] text-[#344D76] border border-[#99AFD7]/40 shadow-2xs font-bold'
-                    : 'bg-[#bfdbfe] text-[#1e3a8a] border border-[#93c5fd] shadow-2xs font-bold'
-                  : isCalmMode
-                    ? 'text-slate-600 hover:text-slate-900 hover:bg-[#E8EEF8]'
-                    : 'text-[#1e3a8a]/80 hover:text-[#1e3a8a] hover:bg-[#bae6fd]/50'
-              }`}
-            >
-              About
-            </button>
-
-            <button
-              id="nav-privacy-btn"
-              type="button"
-              onClick={() => handleNavClick('privacy')}
-              className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all flex items-center gap-1 ${
-                currentView === 'privacy'
-                  ? isCalmMode
-                    ? 'bg-[#E8EEF8] text-[#344D76] border border-[#99AFD7]/40 shadow-2xs font-bold'
-                    : 'bg-[#bfdbfe] text-[#1e3a8a] border border-[#93c5fd] shadow-2xs font-bold'
-                  : isCalmMode
-                    ? 'text-slate-600 hover:text-slate-900 hover:bg-[#E8EEF8]'
-                    : 'text-[#1e3a8a]/80 hover:text-[#1e3a8a] hover:bg-[#bae6fd]/50'
-              }`}
-            >
-              <ShieldCheck className={`w-3.5 h-3.5 ${isCalmMode ? 'text-[#5D7CAE]' : 'text-[#60a5fa]'}`} />
-              <span>Privacy</span>
             </button>
           </nav>
 
           {/* Calm Mode, Sign In, & Menu Toggle */}
-          <div className="flex items-center gap-2 sm:gap-2.5">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 z-10">
             <CalmModeToggle isCalmMode={isCalmMode} onToggle={onToggleCalmMode} />
 
             {/* User Account Button */}
@@ -314,20 +279,20 @@ export const Navbar: React.FC<NavbarProps> = ({
                   id="user-profile-menu-btn"
                   type="button"
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                  className={`px-2.5 sm:px-3.5 py-1.5 rounded-full font-bold text-xs flex items-center gap-1.5 sm:gap-2 transition-all shadow-2xs ${
+                  className={`px-2 sm:px-2.5 py-1 rounded-full font-bold text-xs flex items-center gap-1.5 transition-all shadow-2xs ${
                     isCalmMode
                       ? 'bg-[#E8EEF8] border border-[#99AFD7]/50 text-[#344D76] hover:bg-[#DCE5F4]'
                       : 'bg-[#bfdbfe] border border-[#93c5fd] text-[#1e3a8a] hover:bg-[#93c5fd]'
                   }`}
                 >
                   <div
-                    className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full text-white flex items-center justify-center text-3xs sm:text-2xs font-extrabold ${
+                    className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full text-white flex items-center justify-center text-3xs font-extrabold ${
                       isCalmMode ? 'bg-[#344D76]' : 'bg-[#1e3a8a]'
                     }`}
                   >
                     {currentUser.name.charAt(0).toUpperCase()}
                   </div>
-                  <span className="max-w-[80px] sm:max-w-[120px] truncate">{currentUser.name}</span>
+                  <span className="max-w-[70px] sm:max-w-[100px] truncate text-2xs sm:text-xs">{currentUser.name}</span>
                 </button>
 
                 {/* Dropdown Menu */}
@@ -405,7 +370,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 id="nav-login-btn"
                 type="button"
                 onClick={() => handleNavClick('login')}
-                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${
+                className={`px-2.5 sm:px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all flex items-center gap-1 ${
                   currentView === 'login'
                     ? isCalmMode
                       ? 'bg-[#344D76] text-white shadow-2xs'
@@ -415,7 +380,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       : 'bg-white hover:bg-[#bae6fd]/50 text-[#1e3a8a] border border-[#93c5fd] shadow-2xs'
                 }`}
               >
-                <LogIn className={`w-3.5 h-3.5 ${currentView === 'login' ? 'text-white' : isCalmMode ? 'text-[#5D7CAE]' : 'text-[#60a5fa]'}`} />
+                <LogIn className={`w-3 h-3 shrink-0 ${currentView === 'login' ? 'text-white' : isCalmMode ? 'text-[#5D7CAE]' : 'text-[#60a5fa]'}`} />
                 <span>Sign In</span>
               </button>
             )}
@@ -425,7 +390,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="mobile-menu-toggle-btn"
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className={`p-2 rounded-xl border transition-all flex items-center justify-center ${
+              className={`p-1.5 rounded-lg border transition-all flex items-center justify-center shrink-0 ${
                 isCalmMode
                   ? 'bg-[#E8EEF8] border-[#99AFD7]/50 text-[#344D76] hover:bg-[#DCE5F4] focus:ring-2 focus:ring-[#99AFD7]'
                   : 'bg-[#bfdbfe] border-[#7dd3fc] text-[#1e3a8a] hover:bg-[#93c5fd] focus:ring-2 focus:ring-[#60a5fa]'
@@ -435,9 +400,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               title="Navigation Menu"
             >
               {mobileMenuOpen ? (
-                <X className={`w-5 h-5 ${isCalmMode ? 'text-[#344D76]' : 'text-[#1e3a8a]'}`} />
+                <X className={`w-4 h-4 ${isCalmMode ? 'text-[#344D76]' : 'text-[#1e3a8a]'}`} />
               ) : (
-                <Menu className={`w-5 h-5 ${isCalmMode ? 'text-[#344D76]' : 'text-[#1e3a8a]'}`} />
+                <Menu className={`w-4 h-4 ${isCalmMode ? 'text-[#344D76]' : 'text-[#1e3a8a]'}`} />
               )}
             </button>
           </div>
@@ -765,3 +730,4 @@ export const Navbar: React.FC<NavbarProps> = ({
     </header>
   );
 };
+
