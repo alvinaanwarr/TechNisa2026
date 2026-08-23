@@ -10,6 +10,7 @@ export type LearningPreferenceId =
   | 'simple_language'
   | 'low_stimulation'
   | 'audio_tts'
+  | 'auditory'
   | 'interest_based';
 
 export interface LearningPreferenceOption {
@@ -63,6 +64,7 @@ export interface VisualCard {
   simpleSentence: string;
   arabicTerm?: string;
   arabicTransliteration?: string;
+  englishTranslation?: string;
   iconName: string;
   visualHint: string;
   badge?: string;
@@ -126,6 +128,7 @@ export interface LessonStep {
   detail?: string;
   arabicTerm?: string;
   arabicTransliteration?: string;
+  englishTranslation?: string;
   iconName: string;
   repeatPhrase?: string;
   sensoryTip?: string;
@@ -155,6 +158,56 @@ export interface ReviewQuestion {
   correctAnswerExplanation: string;
 }
 
+export interface QuranReference {
+  surahName: string;
+  surahNumber: number;
+  ayahRange: string;
+  url: string;
+  arabicSnippet?: string;
+  englishSnippet?: string;
+}
+
+export interface ScholarlySource {
+  title: string;
+  scholarOrInstitute: string;
+  sourceType: 'Quran' | 'Tafsir Ibn Kathir' | 'Bayyinah Institute' | 'Yaqeen Institute' | 'Hadith';
+  keyInsight: string;
+  referenceUrl?: string;
+}
+
+export interface PedagogicalResearch {
+  framework: string; // e.g. "Universal Design for Learning (UDL)", "Strengths-Based Safari", "Sensory Processing (OT)"
+  studyCitation: string; // e.g. "Harrison et al., University of Melbourne (2024); King-Sears et al. (2023)"
+  principle: string;
+  practicalApplication: string;
+  clinicalSpecialist?: string; // e.g. "Kara Canale (Psychologist) / Melinda Cooper (OT) / Rebecca Whalen (SLP)"
+}
+
+export interface ProphetItem {
+  id: string;
+  number: number;
+  nameEnglish: string;
+  nameArabic: string;
+  epithet: string;
+  era:
+    | 'Early Creation'
+    | 'The Patriarchs'
+    | 'Patience & Law'
+    | 'Wisdom & Leadership'
+    | 'Kings & Guidance'
+    | 'The Messianic & Final Era'
+    | 'Final Messengers';
+  quranReferences: QuranReference[];
+  tafsirIbnKathirSummary: string;
+  bayyinahInsight: string;
+  yaqeenInsight: string;
+  pedagogicalResearch: PedagogicalResearch[];
+  coreThemes: string[];
+  iconName: string;
+  summary: string;
+  lesson: LessonData;
+}
+
 export interface LessonData {
   id: string;
   topic: string;
@@ -178,6 +231,9 @@ export interface LessonData {
   parentTips: ParentTips;
   disclaimer: string;
   generatedAt?: string;
+  quranReferences?: QuranReference[];
+  scholarlySources?: ScholarlySource[] | { tafsirIbnKathir?: string; bayyinahInstitute?: string; yaqeenInstitute?: string; [key: string]: any };
+  pedagogicalResearch?: PedagogicalResearch[];
 }
 
 export interface TopicPreset {
@@ -244,3 +300,69 @@ export interface CommunityPost {
   linkedLessonTopic?: string;
 }
 
+export interface SensorySocialStory {
+  id: string;
+  topic: string;
+  title: string;
+  icon: string;
+  category: 'wudhu' | 'salah_masjid' | 'umrah_hajj' | 'ramadan' | 'eid' | 'social';
+  sensoryTriggers: string[];
+  copingStrategies: string[];
+  storyLines: string[];
+  audioScript?: string;
+  practicalPrepTips: string[];
+}
+
+export interface MicroStoryScene {
+  sceneNumber: number;
+  emoji: string;
+  title: string;
+  sentence: string;
+  iconName: string;
+}
+
+export interface MicroStory {
+  id: string;
+  prophetOrTopic: string;
+  title: string;
+  eraOrCategory: string;
+  scenes: [
+    MicroStoryScene,
+    MicroStoryScene,
+    MicroStoryScene,
+    MicroStoryScene,
+    MicroStoryScene
+  ];
+  singleLesson: string;
+  audioPrompt?: string;
+}
+
+export interface GoodDeedLogItem {
+  id: string;
+  title: string;
+  iconName: string;
+  emoji: string;
+  category: 'kindness' | 'worship' | 'cleanliness' | 'learning' | 'patience' | 'custom';
+  timestamp: string;
+  dateKey: string; // YYYY-MM-DD
+  notes?: string;
+  isCompleted: boolean;
+}
+
+export interface FavoriteItem {
+  id: string;
+  type: 'lesson' | 'prophet' | 'pec' | 'dhikr' | 'story' | 'sensory';
+  title: string;
+  subtitle?: string;
+  iconName: string;
+  linkPayload?: any;
+  addedAt: string;
+}
+
+export interface AccessibilitySettings {
+  fontSize: 'standard' | 'large' | 'xlarge';
+  hideCompletedSteps: boolean;
+  unclutteredMode: boolean;
+  highContrastText: boolean;
+  autoAudioNarration: boolean;
+}

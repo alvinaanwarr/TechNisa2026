@@ -3,8 +3,8 @@
 @layer base {
   body {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background-color: #EEF3F9;
-    color: #24334A;
+    background-color: #f0f7ff;
+    color: #1e3a8a;
   }
   
   h1, h2, h3, h4, h5, h6, .font-heading {
@@ -12,20 +12,20 @@
   }
 }
 
-/* Soothing #99AFD7 Pastel Sensory Room Theme Utilities */
+/* Soothing Theme Utilities with user palette: #bae6fd, #93c5fd, #7dd3fc, #bfdbfe, #1e3a8a, #60a5fa */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(153, 175, 215, 0.4);
-  box-shadow: 0 4px 20px -2px rgba(153, 175, 215, 0.2), 0 1px 3px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(147, 197, 253, 0.45);
+  box-shadow: 0 4px 20px -2px rgba(125, 211, 252, 0.22), 0 1px 3px rgba(30, 58, 138, 0.04);
 }
 
 .glass-panel-subtle {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(153, 175, 215, 0.3);
+  border: 1px solid rgba(191, 219, 254, 0.5);
 }
 
 .glass-card-hover {
@@ -33,17 +33,44 @@
 }
 
 .glass-card-hover:hover {
-  background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(153, 175, 215, 0.8);
-  box-shadow: 0 10px 25px -4px rgba(153, 175, 215, 0.35);
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(96, 165, 250, 0.8);
+  box-shadow: 0 10px 25px -4px rgba(147, 197, 253, 0.45);
   transform: translateY(-2px);
 }
 
-/* Calm Mode styles */
+/* Calm Mode styles - Reverts to classic sensory denim/slate palette #EEF3F9, #99AFD7, #344D76, #24334A */
 .calm-mode {
   --bg-primary: #EEF3F9;
   --text-primary: #24334A;
   --card-bg: #FFFFFF;
+}
+
+body.calm-mode {
+  background-color: #EEF3F9 !important;
+  color: #24334A !important;
+}
+
+body.calm-mode .glass-panel {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(153, 175, 215, 0.4) !important;
+  box-shadow: 0 4px 20px -2px rgba(153, 175, 215, 0.2), 0 1px 3px rgba(36, 51, 74, 0.04) !important;
+}
+
+body.calm-mode .glass-panel-subtle {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(153, 175, 215, 0.3) !important;
+}
+
+body.calm-mode .glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(153, 175, 215, 0.8) !important;
+  box-shadow: 0 10px 25px -4px rgba(153, 175, 215, 0.3) !important;
+  transform: none !important;
 }
 
 .calm-mode * {
@@ -55,29 +82,47 @@
   -webkit-backdrop-filter: none !important;
 }
 
-/* Focus states for high accessibility */
-*:focus-visible {
-  outline: 3px solid #99AFD7;
+body.calm-mode *:focus-visible {
+  outline: 3px solid #99AFD7 !important;
   outline-offset: 2px;
 }
 
-/* Custom scrollbar in soothing pastel blue #99AFD7 */
+body.calm-mode ::-webkit-scrollbar-track {
+  background: #EEF3F9;
+}
+
+body.calm-mode ::-webkit-scrollbar-thumb {
+  background: #B9CAE7;
+  border-radius: 4px;
+}
+
+body.calm-mode ::-webkit-scrollbar-thumb:hover {
+  background: #99AFD7;
+}
+
+/* Focus states for high accessibility */
+*:focus-visible {
+  outline: 3px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar in soothing sky blue palette */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #EEF3F9;
+  background: #f0f7ff;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #B9CAE7;
+  background: #93c5fd;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #99AFD7;
+  background: #60a5fa;
 }
 
 /* Print Specific Rules for PECS Cards */

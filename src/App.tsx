@@ -14,6 +14,10 @@ import { LoginView } from './views/LoginView';
 import { AboutView } from './views/AboutView';
 import { PrivacyView } from './views/PrivacyView';
 import { CommunityView } from './views/CommunityView';
+import { ProphetStoriesView } from './views/ProphetStoriesView';
+import { GoodDeedsView } from './views/GoodDeedsView';
+import { SensoryPrepView } from './views/SensoryPrepView';
+import { FavoritesAndProgressView } from './views/FavoritesAndProgressView';
 import { LessonData, LearnerProfile, UserAccount } from './types';
 import { HACKATHON_DEMO_LEARNER_1 } from './data/presetLessons';
 import { useLocalStorage } from './hooks/useLocalStorage';
@@ -89,12 +93,28 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#EEF3F9] text-[#24334A] selection:bg-[#E8EEF8] selection:text-[#344D76] font-sans relative overflow-x-hidden">
-      {/* Soft Ambient Pastel Sensory Room Glowing Lights with #99AFD7 */}
+    <div
+      className={`min-h-screen flex flex-col font-sans relative overflow-x-hidden transition-colors ${
+        isCalmMode
+          ? 'bg-[#EEF3F9] text-[#24334A] selection:bg-[#E8EEF8] selection:text-[#344D76]'
+          : 'bg-[#f0f7ff] text-[#1e3a8a] selection:bg-[#bae6fd] selection:text-[#1e3a8a]'
+      }`}
+    >
+      {/* Soft Ambient Pastel Sensory Room Glowing Lights */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
-        <div className="absolute -top-32 -left-32 w-[32rem] h-[32rem] bg-[#99AFD7]/30 rounded-full blur-3xl" />
-        <div className="absolute top-1/3 -right-32 w-[30rem] h-[30rem] bg-[#99AFD7]/25 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-1/4 w-[28rem] h-[28rem] bg-[#C5D5ED]/35 rounded-full blur-3xl" />
+        {isCalmMode ? (
+          <>
+            <div className="absolute -top-32 -left-32 w-[32rem] h-[32rem] bg-[#99AFD7]/25 rounded-full blur-3xl" />
+            <div className="absolute top-1/3 -right-32 w-[30rem] h-[30rem] bg-[#99AFD7]/20 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 left-1/4 w-[28rem] h-[28rem] bg-[#C5D5ED]/30 rounded-full blur-3xl" />
+          </>
+        ) : (
+          <>
+            <div className="absolute -top-32 -left-32 w-[32rem] h-[32rem] bg-[#bae6fd]/40 rounded-full blur-3xl" />
+            <div className="absolute top-1/3 -right-32 w-[30rem] h-[30rem] bg-[#93c5fd]/30 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 left-1/4 w-[28rem] h-[28rem] bg-[#bfdbfe]/40 rounded-full blur-3xl" />
+          </>
+        )}
       </div>
 
       {/* Top Navigation */}
@@ -118,6 +138,7 @@ export default function App() {
             onSelectPresetTopic={handleSelectPresetTopic}
             onLoadDemoLesson={handleLoadDemoLesson}
             currentLessonId={activeLesson?.id}
+            isCalmMode={isCalmMode}
           />
         )}
 
@@ -166,6 +187,40 @@ export default function App() {
           />
         )}
 
+        {currentView === 'prophets' && (
+          <ProphetStoriesView
+            onSelectProphetLesson={handleLessonGenerated}
+            onNavigate={handleNavigate}
+            isCalmMode={isCalmMode}
+          />
+        )}
+
+        {currentView === 'gooddeeds' && (
+          <GoodDeedsView
+            isCalmMode={isCalmMode}
+            onNavigate={handleNavigate}
+          />
+        )}
+
+        {currentView === 'sensory' && (
+          <SensoryPrepView
+            isCalmMode={isCalmMode}
+            onNavigate={handleNavigate}
+          />
+        )}
+
+        {currentView === 'favorites' && (
+          <FavoritesAndProgressView
+            isCalmMode={isCalmMode}
+            onNavigate={handleNavigate}
+            onOpenLesson={(lessonId) => {
+              // Navigate to lesson view
+              setCurrentView('lesson');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
+        )}
+
         {currentView === 'about' && (
           <AboutView onNavigate={handleNavigate} />
         )}
@@ -176,7 +231,7 @@ export default function App() {
       </main>
 
       {/* Global Footer */}
-      <Footer onNavigate={handleNavigate} />
+      <Footer onNavigate={handleNavigate} isCalmMode={isCalmMode} />
     </div>
   );
 }
